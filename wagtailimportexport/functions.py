@@ -10,7 +10,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models.fields.related import ForeignKey
 from django.db.models.fields.reverse_related import ManyToOneRel
 
-from wagtail.core.fields import StreamField
+from wagtail.fields import StreamField
 
 
 def null_pks(page, data):

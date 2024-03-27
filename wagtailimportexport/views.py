@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.utils.translation import ungettext
+from django.utils.translation import ngettext
 from django.http import HttpResponse
 
 from wagtail.admin import messages
@@ -36,19 +36,19 @@ def import_page(request):
             if not num_failed:
                 # All pages are imported.
                 messages.success(
-                    request, ungettext("Imported %(count)s page.", "Imported %(count)s pages.", num_uploaded) 
+                    request, ngettext("Imported %(count)s page.", "Imported %(count)s pages.", num_uploaded) 
                     % {'count': num_uploaded}
                 )
             elif not num_uploaded:
                 # None of the pages are imported.
                 messages.error(
-                    request, ungettext("Failed to import %(count)s page. %(reason)s", "Failed to import %(count)s pages. %(reason)s", num_failed) 
+                    request, ngettext("Failed to import %(count)s page. %(reason)s", "Failed to import %(count)s pages. %(reason)s", num_failed) 
                     % {'count': num_failed, 'reason': response}
                 )
             else:
                 # Some pages are imported and some failed.
                 messages.warning(
-                    request, ungettext("Failed to import %(failed)s out of %(total)s page. %(reason)s", "Failed to import %(failed)s out of %(total)s pages. %(reason)s", num_failed + num_uploaded) 
+                    request, ngettext("Failed to import %(failed)s out of %(total)s page. %(reason)s", "Failed to import %(failed)s out of %(total)s pages. %(reason)s", num_failed + num_uploaded) 
                     % {'failed': num_failed, 'total': num_failed + num_uploaded, 'reason': response}
                 )
 

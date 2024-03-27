@@ -1,8 +1,7 @@
-from django.conf.urls import include, url
-from django.urls import reverse
+from django.urls import include, re_path, reverse
 from django.utils.translation import gettext_lazy as _
 
-from wagtail.core import hooks
+from wagtail import hooks
 from wagtail.admin.menu import MenuItem
 
 from wagtailimportexport import admin_urls
@@ -14,7 +13,7 @@ def register_admin_urls():
     Register 'import-export/' url path to admin urls.
     """
     return [
-        url(r'^import-export/', include(admin_urls, namespace='wagtailimportexport')),
+        re_path(r'^import-export/', include(admin_urls, namespace='wagtailimportexport')),
     ]
 
 

@@ -11,7 +11,7 @@ from django.db import models, transaction, IntegrityError
 
 from modelcluster.models import get_all_child_relations
 
-from wagtail.core.models import Page
+from wagtail.models import Page
 from wagtail.images.models import Image
 from wagtail.documents.models import Document
 
